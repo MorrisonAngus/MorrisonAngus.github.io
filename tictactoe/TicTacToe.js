@@ -1,5 +1,8 @@
 export default function Square() {
-    return <button className="square">X</button>;
+    return (
+    'button',
+    'square'
+        );
 }
 
 const domContainer = document.querySelector('#React-game');
