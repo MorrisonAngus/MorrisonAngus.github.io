@@ -17,6 +17,6 @@ class tictactoe extends React.Component {
   }
 }
 
-const domContainer = document.querySelector('#like_button_container');
+const domContainer = document.querySelector('#React-game');
 const root = ReactDOM.createRoot(domContainer);
 root.render(e(tictactoe));
