@@ -2,21 +2,25 @@
 
 const e = React.createElement;
 
-class tictactoe extends React.Component {
+class LikeButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = { liked: false };
   }
 
   render() {
+    if (this.state.liked) {
+      return 'You liked this.';
+    }
 
     return e(
-        <button className="square">X</button>
-
-      );
+      'button',
+      { onClick: () => this.setState({ liked: true }) },
+      'Like'
+    );
   }
 }
 
 const domContainer = document.querySelector('#React-game');
 const root = ReactDOM.createRoot(domContainer);
-root.render(e(tictactoe));
+root.render(e(LikeButton));
