@@ -35,5 +35,4 @@ class Board extends Component {
 }
 
 const domContainer = document.querySelector('#React-game');
-const root = ReactDOM.createRoot(domContainer);
-root.render(createElement(Board));
+ReactDOM.render(createElement(Board), domContainer);
