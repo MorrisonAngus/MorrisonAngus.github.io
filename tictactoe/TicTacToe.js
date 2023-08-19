@@ -13,7 +13,7 @@ class LikeButton extends React.Component {
       return 'You liked this.';
     }
 
-    return e(
+    return(
       'button',
       { onClick: () => this.setState({ liked: true }) },
       'Like'
@@ -23,4 +23,4 @@ class LikeButton extends React.Component {
 
 const domContainer = document.querySelector('#React-game');
 const root = ReactDOM.createRoot(domContainer);
-root.render(e(LikeButton));
+root.render(LikeButton);
