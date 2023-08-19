@@ -1,20 +1,20 @@
 'use strict';
 
-const board = React.createElement;
+const { createElement, Component } = React;
 
-class Square extends React.Component() {
-    constructor(props){
-        super(props)
+class Square extends Component {
+    constructor(props) {
+        super(props);
     }
     
-    render(){
-        return board(
-                'button',
-                'square'
-            );
+    render() {
+        return createElement(
+            'button',
+            { className: 'square' }
+        );
     }
 }
 
 const domContainer = document.querySelector('#React-game');
 const root = ReactDOM.createRoot(domContainer);
-root.render(board(Square));
+root.render(createElement(Square));
