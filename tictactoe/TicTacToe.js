@@ -8,17 +8,21 @@ class Square extends Component {
         super(props);
         this.state = {
             value: '',
+            hasBeenClicked: false,
         };
         this.update = this.update.bind(this);
     }
     
     update() {
-        if (player_turn === 1) {
-            this.setState({ value: 'X' });
-            player_turn = 2;
-        } else {
-            this.setState({ value: 'O' });
-            player_turn = 1;
+        if (!this.state.hasBeenClicked){
+            if (player_turn === 1) {
+                this.setState({ value: 'X' });
+                player_turn = 2;
+            } else {
+                this.setState({ value: 'O' });
+                player_turn = 1;
+            }
+            this.setState({ hasBeenClicked: true })
         }
     }
 
