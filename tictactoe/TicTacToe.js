@@ -13,7 +13,7 @@ class Square extends Component {
     }
     
     update() {
-        if (player_turn == 1) {
+        if (player_turn === 1) {
             this.setState({ value: 'X' });
             player_turn = 2;
         } else {
@@ -28,17 +28,19 @@ class Square extends Component {
             height: '100px',
         };
 
-        return (
-            <button className="square" style={buttonStyle} onClick={this.update}>
-                {this.state.value}
-            </button>
+        const buttonElement = createElement(
+            'button',
+            { className: 'square', style: buttonStyle, onClick: this.update },
+            this.state.value
         );
+
+        return buttonElement;
     }
 }
 
 class Board extends Component {
     renderSquare(row, col) {
-        return <Square />;
+        return createElement(Square);
     }
     
     render() {
@@ -48,12 +50,15 @@ class Board extends Component {
             for (let j = 0; j < 3; j++) {
                 row.push(this.renderSquare(i, j));
             }
-            boardRows.push(<div className="board-row">{row}</div>);
+            const rowElement = createElement('div', { className: 'board-row' }, row);
+            boardRows.push(rowElement);
         }
-        
-        return <div>{boardRows}</div>;
+
+        const containerElement = createElement('div', null, boardRows);
+        return containerElement;
     }
 }
 
 const domContainer = document.querySelector('#React-game');
-ReactDOM.render(<Board />, domContainer);
+const boardElement = createElement(Board);
+ReactDOM.render(boardElement, domContainer);
