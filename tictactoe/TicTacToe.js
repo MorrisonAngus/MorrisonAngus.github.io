@@ -14,10 +14,10 @@ class Square extends Component {
     
     update() {
         if (player_turn == 1) {
-            this.setState({value: 'X'});
+            this.setState({ value: 'X' });
             player_turn = 2;
-        }else{
-            this.setState({value: 'O'})
+        } else {
+            this.setState({ value: 'O' });
             player_turn = 1;
         }
     }
@@ -26,9 +26,9 @@ class Square extends Component {
         const buttonStyle = {
             width: '100px',
             height: '100px',
-        }
+        };
 
-        return createElement(
+        return (
             <button className="square" style={buttonStyle} onClick={this.update}>
                 {this.state.value}
             </button>
@@ -38,7 +38,7 @@ class Square extends Component {
 
 class Board extends Component {
     renderSquare(row, col) {
-        return createElement(Square);
+        return <Square />;
     }
     
     render() {
@@ -48,13 +48,12 @@ class Board extends Component {
             for (let j = 0; j < 3; j++) {
                 row.push(this.renderSquare(i, j));
             }
-            boardRows.push(createElement('div', { className: 'board-row' }, row));
+            boardRows.push(<div className="board-row">{row}</div>);
         }
         
-        return createElement('div', null, boardRows);
+        return <div>{boardRows}</div>;
     }
 }
 
-
 const domContainer = document.querySelector('#React-game');
-ReactDOM.render(createElement(Board), domContainer);
+ReactDOM.render(<Board />, domContainer);
