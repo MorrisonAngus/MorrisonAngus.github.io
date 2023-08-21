@@ -12,7 +12,7 @@ class Square extends Component {
         this.update = this.update.bind(this);
     }
     
-    update(this) {
+    update() {
         if (player_turn == 1) {
             this.setState({value: 'X'});
             player_turn = 2;
