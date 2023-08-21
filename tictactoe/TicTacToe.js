@@ -66,7 +66,7 @@ class Board extends Component {
 }
 
 class Game extends Component {
-    constructer(props){
+    constructor(props){
         super(props);
         this.state = {
             boardKey: 0, // Use this as a way to reset the board easily
