@@ -65,7 +65,9 @@ class Board extends Component {
             boardRows.push(rowElement);
         }
 
-        const containerElement = createElement('div', null, boardRows);
+        const boardContainer = createElement('div', { className: 'board-container' }, boardRows);
+
+        const containerElement = createElement('div', null, boardContainer);
         return containerElement;
     }
 }
