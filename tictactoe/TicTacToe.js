@@ -50,7 +50,7 @@ class Board extends Component {
             for (let j = 0; j < 3; j++) {
                 row.push(this.renderSquare(i, j));
             }
-            const rowElement = createElement('div', { className: 'board-row' }, row);
+            const rowElement = createElement('div', { className: 'board-row', key: i }, row);
             boardRows.push(rowElement);
         }
 
