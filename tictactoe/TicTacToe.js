@@ -126,7 +126,7 @@ class Game extends Component {
         }
     }
     resetBoard() {
-        player_turn = 1;
+        player_turn = 'X';
         this.setState({ boardKey: this.state.boardKey + 1 })
     }
 
