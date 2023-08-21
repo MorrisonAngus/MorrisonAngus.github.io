@@ -9,8 +9,8 @@ class Square extends Component {
     
     render() {
         const buttonStyle = {
-            width: '300px',
-            height: '300px',
+            width: '100px',
+            height: '100px',
         }
 
         return createElement(
