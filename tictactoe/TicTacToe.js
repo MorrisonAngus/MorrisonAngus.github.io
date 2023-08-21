@@ -104,8 +104,8 @@ class Board extends Component {
             boardRows.push(rowElement);
         }
 
-        // Check for a winner
-        const winner = this.checkForWinner(this.state.boardArray);
+
+        // update the status to display to the user
         let status;
         if (winner) {
             status = `Winner: ${winner}`;
