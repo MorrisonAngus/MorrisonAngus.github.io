@@ -19,7 +19,7 @@ class Square extends Component {
     }
     
     update() {
-        if (!this.state.hasBeenClicked){
+        if (!this.state.hasBeenClicked && !this.props.winner){
             if (player_turn === 'X') {
                 this.setState({ value: 'X' });
             } else {
@@ -57,12 +57,14 @@ class Board extends Component {
         super(props);
         this.state = {
             boardArray: Array(9).fill(null),
+            winner: false,
         }
     }
 
     renderSquare(row, col) {
         return createElement(Square, {
             key: `${row}-${col}`,
+            winner: this.state.winner,
             onSquareClick: () => this.onSquareClick(row, col)} );
     }
 
@@ -83,6 +85,7 @@ class Board extends Component {
         for (const placements of winninngPlacements) {
             const [a, b, c] = placements;
             if (boardArray[a] && boardArray[a] === boardArray[b] && boardArray[a] === boardArray[c]) {
+                this.setState({winner: true})
                 return boardArray[a] === 'X' ? 'X' : 'O';; // Return the winner (X or O)
             }
         }
