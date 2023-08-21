@@ -65,7 +65,8 @@ class Board extends Component {
         return createElement(Square, {
             key: `${row}-${col}`,
             winner: this.state.winner,
-            onSquareClick: () => this.onSquareClick(row, col)} );
+            onSquareClick: this.onSquareClick.bind(this, row, col)
+        });
     }
 
     onSquareClick(row, col) {
