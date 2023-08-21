@@ -1,20 +1,20 @@
 'use strict';
 
 const { createElement, Component } = React;
-player_turn = 1;
+let player_turn = 1;
 
 class Square extends Component {
     constructor(props) {
         super(props);
-        this.state;
+        this.state = '';
     }
     
     update(this) {
         if (player_turn == 1) {
-            this.state = 'X';
+            this.setState = 'X';
             player_turn = 2;
         }else{
-            this.state = 'O'
+            this.setState = 'O'
             player_turn = 1;
         }
     }
