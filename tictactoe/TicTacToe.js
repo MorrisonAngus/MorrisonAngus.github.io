@@ -6,15 +6,18 @@ let player_turn = 1;
 class Square extends Component {
     constructor(props) {
         super(props);
-        this.state = '';
+        this.state = {
+            value: '',
+        };
+        this.update = this.update.bind(this);
     }
     
     update(this) {
         if (player_turn == 1) {
-            this.setState = 'X';
+            this.setState({value: 'X'});
             player_turn = 2;
         }else{
-            this.setState = 'O'
+            this.setState({value: 'O'})
             player_turn = 1;
         }
     }
@@ -26,8 +29,8 @@ class Square extends Component {
         }
 
         return createElement(
-            <button className="square" style={buttonStyle}>
-                {this.state}
+            <button className="square" style={buttonStyle} onClick={this.update}>
+                {this.state.value}
             </button>
         );
     }
