@@ -40,7 +40,7 @@ class Square extends Component {
 
 class Board extends Component {
     renderSquare(row, col) {
-        return createElement(Square);
+        return createElement(Square, {key: '${row}-${col}'} );
     }
     
     render() {
