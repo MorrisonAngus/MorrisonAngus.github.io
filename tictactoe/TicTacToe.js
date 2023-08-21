@@ -27,7 +27,7 @@ class Square extends Component {
             }
             this.setState({ hasBeenClicked: true })
             this.props.onSquareClick(this.props.row, this.props.col);
-            player_turn === 'X' ? 'O' : 'X';
+            player_turn = player_turn === 'X' ? 'O' : 'X';
         }
     }
 
@@ -81,7 +81,7 @@ class Board extends Component {
         for (const placements of winninngPlacements) {
             const [a, b, c] = placements;
             if (boardArray[a] && boardArray[a] === boardArray[b] && boardArray[a] === boardArray[c]) {
-                return boardArray[a]; // Return the winner (X or O)
+                return boardArray[a] === 'X' ? 'X' : 'O';; // Return the winner (X or O)
             }
         }
         return null; // No winner
@@ -99,7 +99,7 @@ class Board extends Component {
         }
 
         // Check for a winner
-        const winner = this.checkForWinner(this.boardArray);
+        const winner = this.checkForWinner(this.state.boardArray);
         let status;
         if (winner) {
             status = `Winner: ${winner}`;
