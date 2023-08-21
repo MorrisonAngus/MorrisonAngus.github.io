@@ -43,6 +43,8 @@ class Square extends Component {
 }
 
 class Board extends Component {
+
+
     renderSquare(row, col) {
         return createElement(Square, {key: `${row}-${col}`} );
     }
@@ -60,6 +62,25 @@ class Board extends Component {
 
         const containerElement = createElement('div', null, boardRows);
         return containerElement;
+    }
+}
+
+class Game extends Component {
+    constructer(props){
+        super(props);
+        this.state = {
+            boardKey: 0, // Use this as a way to reset the board easily
+        }
+    }
+    resetBoard() {
+        player_turn = 1;
+        this.setState({ boardKey: this.state.boardKey + 1 })
+    }
+
+    render() {
+        const board = createElement(Board, { key: this.state.boardKey })
+        const resetButton = createElement('button', { onClick: () => this.resetBoard() }, 'Reset');
+        return createElement('div', null, board, resetButton)
     }
 }
 
