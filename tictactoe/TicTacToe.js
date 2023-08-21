@@ -85,5 +85,5 @@ class Game extends Component {
 }
 
 const domContainer = document.querySelector('#React-game');
-const boardElement = createElement(Board);
+const boardElement = createElement(Game);
 ReactDOM.render(boardElement, domContainer);
