@@ -2,6 +2,11 @@
 
 const { createElement, Component } = React;
 let player_turn = 'X';
+const winninngPlacements = [
+    [0, 1, 2], [3, 4, 5], [6, 7, 8], // Horizontal
+    [0, 3, 6], [1, 4, 7], [2, 5, 8], // Vertical
+    [0, 4, 8], [2, 4, 6]            // Diagonal
+];
 
 class Square extends Component {
     constructor(props) {
@@ -17,12 +22,12 @@ class Square extends Component {
         if (!this.state.hasBeenClicked){
             if (player_turn === 'X') {
                 this.setState({ value: 'X' });
-                player_turn = 'O';
             } else {
                 this.setState({ value: 'O' });
-                player_turn = 'X';
             }
             this.setState({ hasBeenClicked: true })
+            this.props.onSquareClick(this.props.row, this.props.col);
+            player_turn === 'X' ? 'O' : 'X';
         }
     }
 
@@ -48,47 +53,53 @@ class Square extends Component {
 }
 
 class Board extends Component {
-
+    constructor(props) {
+        super(props);
+        this.state = {
+            boardArray: Array(9).fill(null),
+        }
+    }
 
     renderSquare(row, col) {
         return createElement(Square, {key: `${row}-${col}`} );
     }
 
-    checkForWinner(squares) {
-        // Define winning combinations
-        const winningCombinations = [
-            [0, 1, 2], [3, 4, 5], [6, 7, 8], // Horizontal
-            [0, 3, 6], [1, 4, 7], [2, 5, 8], // Vertical
-            [0, 4, 8], [2, 4, 6]            // Diagonal
-        ];
+    onSquareClick(row, col) {
+        const newBoardArray = [...this.state.boardArray]; // Create a copy
+        newBoardArray[row * 3 + col] = player_turn; // Update the copy
 
-        for (const combination of winningCombinations) {
-            const [a, b, c] = combination;
-            if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-                return squares[a]; // Return the winner (X or O)
-            }
-        }
+        // Check for a winner
+        this.checkForWinner(newBoardArray);
 
-        return null; // No winner
+        // Update the state with the new boardArray and the winner
+        this.setState({
+            boardArray: newBoardArray,
+        });
     }
 
+    checkForWinner(boardArray) {
+        for (const placements of winninngPlacements) {
+            const [a, b, c] = placements;
+            if (boardArray[a] && boardArray[a] === boardArray[b] && boardArray[a] === boardArray[c]) {
+                return boardArray[a]; // Return the winner (X or O)
+            }
+        }
+        return null; // No winner
+    }
+    
     render() {
-        const squares = Array(9).fill(null); // Create an array to hold square values
-
         const boardRows = [];
         for (let i = 0; i < 3; i++) {
             const row = [];
             for (let j = 0; j < 3; j++) {
-                const index = i * 3 + j; // Calculate index for each square
                 row.push(this.renderSquare(i, j));
-                squares[index] = this.state.squares[index]; // Store square value in the array
             }
             const rowElement = createElement('div', { className: 'board-row', key: i }, row);
             boardRows.push(rowElement);
         }
 
         // Check for a winner
-        const winner = this.checkForWinner(squares);
+        const winner = this.checkForWinner(this.boardArray);
         let status;
         if (winner) {
             status = `Winner: ${winner}`;
@@ -118,7 +129,6 @@ class Game extends Component {
     }
 
     render() {
-        const title = createElement('h1', null, `Player: ${player_turn}`)
         const board = createElement(Board, { key: this.state.boardKey })
         const resetButton = createElement('button', { onClick: () => this.resetBoard() }, 'Reset');
         return createElement('div', null, board, resetButton)
