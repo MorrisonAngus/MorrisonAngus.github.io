@@ -53,21 +53,54 @@ class Board extends Component {
     renderSquare(row, col) {
         return createElement(Square, {key: `${row}-${col}`} );
     }
-    
+
+    checkForWinner(squares) {
+        // Define winning combinations
+        const winningCombinations = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8], // Horizontal
+            [0, 3, 6], [1, 4, 7], [2, 5, 8], // Vertical
+            [0, 4, 8], [2, 4, 6]            // Diagonal
+        ];
+
+        for (const combination of winningCombinations) {
+            const [a, b, c] = combination;
+            if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+                return squares[a]; // Return the winner (X or O)
+            }
+        }
+
+        return null; // No winner
+    }
+
     render() {
+        const squares = Array(9).fill(null); // Create an array to hold square values
+
         const boardRows = [];
         for (let i = 0; i < 3; i++) {
             const row = [];
             for (let j = 0; j < 3; j++) {
+                const index = i * 3 + j; // Calculate index for each square
                 row.push(this.renderSquare(i, j));
+                squares[index] = this.state.squares[index]; // Store square value in the array
             }
             const rowElement = createElement('div', { className: 'board-row', key: i }, row);
             boardRows.push(rowElement);
         }
 
+        // Check for a winner
+        const winner = this.checkForWinner(squares);
+        let status;
+        if (winner) {
+            status = `Winner: ${winner}`;
+        } else {
+            status = `Player: ${player_turn}`;
+        }
+
+        const titleElement = createElement('h1', null, `Tic Tac Toe - ${status}`);
+
         const boardContainer = createElement('div', { className: 'board-container' }, boardRows);
 
-        const containerElement = createElement('div', null, boardContainer);
+        const containerElement = createElement('div', null, titleElement, boardContainer);
         return containerElement;
     }
 }
