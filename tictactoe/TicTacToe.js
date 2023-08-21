@@ -86,8 +86,8 @@ class Board extends Component {
         for (const placements of winninngPlacements) {
             const [a, b, c] = placements;
             if (boardArray[a] && boardArray[a] === boardArray[b] && boardArray[a] === boardArray[c]) {
-                this.setState({winner: true})
-                return boardArray[a] === 'X' ? 'X' : 'O';; // Return the winner (X or O)
+                this.setState({winner: boardArray[a] === 'X' ? 'X' : 'O'})
+                return boardArray[a] === 'X' ? 'X' : 'O'; // Return the winner (X or O)
             }
         }
         return null; // No winner
@@ -107,8 +107,8 @@ class Board extends Component {
 
         // update the status to display to the user
         let status;
-        if (winner) {
-            status = `Winner: ${winner}`;
+        if (this.state.winner) {
+            status = `Winner: ${this.state.winner}`;
         } else {
             status = `Player: ${player_turn}`;
         }
