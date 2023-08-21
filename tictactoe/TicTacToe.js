@@ -6,7 +6,7 @@ player_turn = 1;
 class Square extends Component {
     constructor(props) {
         super(props);
-        this.state = null;
+        this.state;
     }
     
     update(this) {
