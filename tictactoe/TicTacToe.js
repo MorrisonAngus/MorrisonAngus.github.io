@@ -8,9 +8,14 @@ class Square extends Component {
     }
     
     render() {
+        const buttonStyle = {
+            width: '300px',
+            height: '300px',
+        }
+
         return createElement(
             'button',
-            { className: 'square' }
+            { className: 'square', style: buttonStyle }
         );
     }
 }
