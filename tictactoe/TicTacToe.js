@@ -111,7 +111,7 @@ class Board extends Component {
         move_count = move_count + 1;
         if (this.state.winner) {
             status = `Winner: ${this.state.winner}`;
-        } else if(move_count === 9) {
+        } else if(move_count === 10) { // needs to be 10 as render happens once before the first move is taken
             status = 'Tie Game'
         } else {
             status = `Player: ${player_turn}`;
@@ -136,6 +136,7 @@ class Game extends Component {
     resetBoard() {
         player_turn = 'X';
         this.setState({ boardKey: this.state.boardKey + 1 })
+        move_count = 0;
     }
 
     render() {
