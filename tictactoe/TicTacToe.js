@@ -7,6 +7,7 @@ const winninngPlacements = [
     [0, 3, 6], [1, 4, 7], [2, 5, 8], // Vertical
     [0, 4, 8], [2, 4, 6]            // Diagonal
 ];
+let move_count = 0;
 
 class Square extends Component {
     constructor(props) {
@@ -107,8 +108,11 @@ class Board extends Component {
 
         // update the status to display to the user
         let status;
+        move_count = move_count + 1;
         if (this.state.winner) {
             status = `Winner: ${this.state.winner}`;
+        } else if(move_count === 9) {
+            status = 'Tie Game'
         } else {
             status = `Player: ${player_turn}`;
         }
