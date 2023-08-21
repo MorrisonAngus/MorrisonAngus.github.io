@@ -1,7 +1,7 @@
 'use strict';
 
 const { createElement, Component } = React;
-let player_turn = 1;
+let player_turn = 'X';
 
 class Square extends Component {
     constructor(props) {
@@ -15,12 +15,12 @@ class Square extends Component {
     
     update() {
         if (!this.state.hasBeenClicked){
-            if (player_turn === 1) {
+            if (player_turn === 'X') {
                 this.setState({ value: 'X' });
-                player_turn = 2;
+                player_turn = 'O';
             } else {
                 this.setState({ value: 'O' });
-                player_turn = 1;
+                player_turn = 'X';
             }
             this.setState({ hasBeenClicked: true })
         }
@@ -30,6 +30,11 @@ class Square extends Component {
         const buttonStyle = {
             width: '100px',
             height: '100px',
+            display: 'flex',      // Use flex display to center content
+            justifyContent: 'center',
+            alignItems: 'center',
+            fontSize: '24px',     // Set a consistent font size
+            border: '1px solid #000',
         };
 
         const buttonElement = createElement(
@@ -78,6 +83,7 @@ class Game extends Component {
     }
 
     render() {
+        const title = createElement('h1', null, `Player: ${player_turn}`)
         const board = createElement(Board, { key: this.state.boardKey })
         const resetButton = createElement('button', { onClick: () => this.resetBoard() }, 'Reset');
         return createElement('div', null, board, resetButton)
