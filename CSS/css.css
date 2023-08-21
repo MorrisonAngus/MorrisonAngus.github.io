@@ -17,3 +17,9 @@ h3 {
     margin-bottom: 0;
     padding-bottom: 0;
 }
+
+.board-container {
+    display: grid;
+    grid-template-columns: repeat(3, 100px); /* Adjust the column size as needed */
+    gap: 1px; /* Gap between rows and columns */
+}

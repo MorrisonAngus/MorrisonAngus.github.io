@@ -30,6 +30,11 @@ class Square extends Component {
         const buttonStyle = {
             width: '100px',
             height: '100px',
+            display: 'flex',      // Use flex display to center content
+            justifyContent: 'center',
+            alignItems: 'center',
+            fontSize: '24px',     // Set a consistent font size
+            border: '1px solid #000',
         };
 
         const buttonElement = createElement(
