@@ -1,3 +1,5 @@
+
+/* general page css */
 body {
     background-color: cornsilk;
 }
@@ -18,6 +20,13 @@ h3 {
     padding-bottom: 0;
 }
 
+.navigation {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Tic Tac Toe page css */
 .board-container {
     display: grid;
     grid-template-columns: repeat(3, 100px); /* Adjust the column size as needed */
