@@ -1,7 +1,7 @@
 
 /* general page css */
 body {
-    background-color: cornsilk;
+    background-color: #DFD6A7;
 }
 
 p {
@@ -24,8 +24,12 @@ h3 {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    display: block;
-    padding: 8px;
+    overflow: hidden;
+    background-color: #8B1E3F;
+}
+
+.nav-item {
+    float: left;
 }
 
 /* Tic Tac Toe page css */
