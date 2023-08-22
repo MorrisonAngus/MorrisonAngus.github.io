@@ -21,15 +21,14 @@ h3 {
 }
 
 .navigation {
-    position: -webkit-sticky;
-    position: sticky;
+    position: fixed;
     top: 0;
     width: 100%;
     list-style-type: none;
-    margin-top: 0;
+    margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #8B1E3F;
+    background-color: #96A5A3;
 }
 
 .nav-item {
