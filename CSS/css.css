@@ -32,6 +32,18 @@ h3 {
     float: left;
 }
 
+.nav-link {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    background-color: #EAAC8B;
+}
+
 /* Tic Tac Toe page css */
 .board-container {
     display: grid;
