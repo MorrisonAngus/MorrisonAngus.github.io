@@ -62,7 +62,10 @@ h3 {
 .contact {
     list-style-type: none;
     overflow: hidden;
+}
 
+.contact-item {
+    float: left;
 }
 
 /* Tic Tac Toe page css */
