@@ -21,6 +21,10 @@ h3 {
 }
 
 .navigation {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    width: 100%;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -42,6 +46,10 @@ h3 {
 
 .nav-link:hover {
     background-color: #EAAC8B;
+}
+
+.nav-link:active {
+    background-color: #01172F;
 }
 
 /* Tic Tac Toe page css */
