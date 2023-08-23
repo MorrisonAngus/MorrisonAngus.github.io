@@ -1,6 +1,6 @@
 name: Build and Deploy
 
-on:  push
+on: push
 
 jobs:
   build:
@@ -15,6 +15,9 @@ jobs:
       with:
         node-version: 16
 
+    - name: Update npm
+      run: npm install -g npm@latest
+
     - name: Install Dependencies
       run: npm install
 
@@ -25,12 +28,10 @@ jobs:
       run: mkdir dist
 
     - name: Build with Babel
-      run: npx @babel/cli
+      run: npx @babel/cli src --out-dir dist
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./dist
-
-# adding a comment so I can commit the new version
