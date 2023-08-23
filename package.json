@@ -7,7 +7,7 @@
       "start": "node index.js"
     },
     "devDependencies": {
-        "@babel/cli": "version"
+        "@babel/cli": "^7.0.0"
       }
 }
   
