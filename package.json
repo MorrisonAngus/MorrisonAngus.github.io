@@ -1,0 +1,10 @@
+{
+    "name": "angus-website",
+    "version": "0.1.0",
+    "description": "A website to include as a resume extension",
+    "main": "index.js",
+    "scripts": {
+      "start": "node index.js"
+    }
+}
+  
