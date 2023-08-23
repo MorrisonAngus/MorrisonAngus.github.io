@@ -1,0 +1,1 @@
+This file holds all of the .js files for each of the web apps. This is so that bable can complie them into js from jsx.
