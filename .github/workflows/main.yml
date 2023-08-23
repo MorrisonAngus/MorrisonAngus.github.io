@@ -27,6 +27,9 @@ jobs:
     - name: Create New Dist Directory
       run: mkdir dist
 
+    - name: Install Babel Presets
+      run: npm install --save-dev @babel/preset-react
+
     - name: Build with Babel
       run: npx babel src --out-dir dist --presets=@babel/preset-react
 
