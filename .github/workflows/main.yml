@@ -34,7 +34,8 @@ jobs:
         run: chmod +x node_modules/.bin/babel
 
       - name: Build with Babel
-        run: npx babel src --out-dir dist --presets=@babel/preset-react
+        run: npx babel src --out-dir dist --presets=@babel/preset-react --config-file ./babel.config.js
+
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
