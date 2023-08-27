@@ -37,6 +37,9 @@ jobs:
       - name: Build with Babel
         run: npx babel src --out-dir dist --presets=@babel/preset-react --config-file ./babel.config.js
 
+      - name: List Files in Dist Directory
+        run: ls dist
+
   deploy:
     runs-on: ubuntu-latest
     
