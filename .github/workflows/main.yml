@@ -36,7 +36,10 @@ jobs:
       - name: Build with Babel
         run: npx babel src --out-dir dist --presets=@babel/preset-react --config-file ./babel.config.js
 
-
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
