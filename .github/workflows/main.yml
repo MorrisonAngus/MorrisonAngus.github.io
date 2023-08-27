@@ -7,34 +7,34 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: 16
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
 
-    - name: Update npm
-      run: npm install -g npm@latest
+      - name: Update npm
+        run: npm install -g npm@latest
 
-    - name: Install Dependencies
-      run: npm install
+      - name: Install Dependencies
+        run: npm install
 
-    - name: Delete Old Dist Directory
-      run: rm -rf dist
+      - name: Delete Old Dist Directory
+        run: rm -rf dist
 
-    - name: Create New Dist Directory
-      run: mkdir dist
+      - name: Create New Dist Directory
+        run: mkdir dist
 
-    - name: Install Babel Presets
-      run: npm install --save-dev @babel/preset-react
+      - name: Install Babel Presets
+        run: npm install --save-dev @babel/preset-react
 
-    - name: Build with Babel
-      run: npx babel src --out-dir dist --presets=@babel/preset-react
+      - name: Build with Babel
+        run: npx babel src --out-dir dist --presets=@babel/preset-react
 
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.PAT_GITHUB_TOKEN }}
-        publish_dir: ./dist
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.PAT_GITHUB_TOKEN }}
+          publish_dir: ./dist
