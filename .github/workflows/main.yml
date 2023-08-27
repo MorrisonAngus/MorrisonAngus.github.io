@@ -22,12 +22,6 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Delete Old Dist Directory
-        run: rm -rf dist
-
-      - name: Create New Dist Directory
-        run: mkdir dist
-
       - name: Install Babel Presets
         run: npm install --save-dev @babel/preset-react
 
