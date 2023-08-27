@@ -30,6 +30,9 @@ jobs:
       - name: Install Babel Presets
         run: npm install --save-dev @babel/preset-react
 
+      - name: Make Babel Script Executable
+        run: chmod +x node_modules/.bin/babel
+
       - name: Build with Babel
         run: npx babel src --out-dir dist --presets=@babel/preset-react
 
