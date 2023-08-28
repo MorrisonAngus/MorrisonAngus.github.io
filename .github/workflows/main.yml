@@ -45,7 +45,7 @@ jobs:
           git config --local user.email "angus@mm2.ca"
           git config --local user.name "MorrisonAngus"
           git add dist
-          git commit -m "Update dist directory"
+          git commit --allow-empty -m "Update dist directory"
           git push
 
   deploy:
