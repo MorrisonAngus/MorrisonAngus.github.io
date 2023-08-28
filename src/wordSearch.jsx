@@ -8,11 +8,12 @@ class Board extends Component {
       super(props);
       this.state = {
         grid: [
-          ['W', 'O', 'R', 'D', 'S'],
-          ['E', 'A', 'R', 'C', 'H'],
-          ['L', 'I', 'N', 'E', 'S'],
-          ['A', 'T', 'T', 'F', 'G'],
-        ],
+            ['W', 'E', 'L', 'A'],
+            ['O', 'A', 'I', 'T'],
+            ['R', 'R', 'N', 'T'],
+            ['D', 'U', 'C', 'K'],
+            ['S', 'H', 'S', 'G'],
+          ],
       };
     }
   
