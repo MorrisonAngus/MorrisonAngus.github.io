@@ -128,50 +128,50 @@ class Board extends Component {
 
 
     render() {
-      const { grid, clickedCells } = this.state;
-  
-      return (
-        <div className="board">
-          {grid.map((row, rowIndex) => (
-            <div key={rowIndex} className="row">
-              {row.map((cell, colIndex) => (
-                <div
-                  key={colIndex}
-                  className={`cell ${
-                    clickedCells.has(`${rowIndex}-${colIndex}`) ? 'clicked' : ''
-                  }`}
-                  onClick={() => this.handleCellClick(rowIndex, colIndex)}
-                  onMouseDown={() => this.handleMouseDown(rowIndex, colIndex)}
-                  onMouseEnter={() => {
-                    if (this.state.isMouseDown) {
-                      this.handleCellSelection(rowIndex, colIndex);
-                    }
-                  }}
-                  onMouseUp={this.handleMouseUp}
-                >
-                  {cell}
-                </div>
-              ))}
+        const { grid, clickedCells } = this.state;
+        const remainingWords = this.wordList.filter(word => !this.state.foundWords.includes(word));
+      
+        return (
+          <div className="board">
+            {grid.map((row, rowIndex) => (
+              <div key={rowIndex} className="row">
+                {row.map((cell, colIndex) => (
+                  <div
+                    key={colIndex}
+                    className={`cell ${
+                      clickedCells.has(`${rowIndex}-${colIndex}`) ? 'clicked' : ''
+                    }`}
+                    onClick={() => this.handleCellClick(rowIndex, colIndex)}
+                    onMouseDown={() => this.handleMouseDown(rowIndex, colIndex)}
+                    onMouseEnter={() => {
+                      if (this.state.isMouseDown) {
+                        this.handleCellSelection(rowIndex, colIndex);
+                      }
+                    }}
+                    onMouseUp={this.handleMouseUp}
+                  >
+                    {cell}
+                  </div>
+                ))}
+              </div>
+            ))}
+            <div className="word-list">
+              <h3>Word List</h3>
+              <ul>
+                {this.state.foundWords.map((word, index) => (
+                  <li key={index} className="found-word">
+                    <s>{word}</s>
+                  </li>
+                ))}
+                {remainingWords.map((word, index) => (
+                  <li key={index}>{word}</li>
+                ))}
+              </ul>
             </div>
-          ))}
-          <div className="word-list">
-            <h3>Word List</h3>
-            <ul>
-              {foundWords.map((word, index) => (
-                <li key={index} className="found-word">
-                  <s>{word}</s>
-                </li>
-              ))}
-              {remainingWords.map((word, index) => (
-                <li key={index}>{word}</li>
-              ))}
-            </ul>
           </div>
-        </div>
-      );
+        );
     }
-  }
-
+}
 
 class Game extends Component {
     constructor(props) {
