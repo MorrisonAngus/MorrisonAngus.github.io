@@ -46,6 +46,7 @@ jobs:
           git config --local user.name "MorrisonAngus"
           git add dist
           git commit -m "Update dist directory"
+          git push
 
   deploy:
     runs-on: ubuntu-latest
