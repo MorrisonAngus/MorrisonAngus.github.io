@@ -19,7 +19,7 @@ class Board extends Component {
         startRowIndex: null,
         startColIndex: null,
       };
-      this.wordList - ['WORDS', 'DUCK', 'SUN', 'AT', 'IT'];
+      this.wordList = ['WORDS', 'DUCK', 'SUN', 'AT', 'IT'];
     }
 
     /* Handel the mouse functions for click and drag */
