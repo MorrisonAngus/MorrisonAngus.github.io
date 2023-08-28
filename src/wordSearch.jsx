@@ -103,11 +103,11 @@ class Board extends Component {
         const { clickedCells } = this.state;
         const selectedCells = Array.from(clickedCells).sort().join(',');
         const foundWord = this.checkSelectedCellsForWord(selectedCells);
-        return foundWord ? [foundWord, ...this.state.foundWords] : this.state.foundWords;
+        return foundWord ? [foundWord, ...this.foundWords] : this.foundWords;
     }
     
     getRemainingWords() {
-        return this.wordList.filter(word => !this.state.foundWords.includes(word));
+        return this.wordList.filter(word => !this.foundWords.includes(word));
     }
 
     checkSelectedCellsForWord(selectedCells) {
