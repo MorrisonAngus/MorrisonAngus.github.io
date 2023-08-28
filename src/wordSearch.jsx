@@ -127,7 +127,7 @@ class Game extends Component {
     }
 
     render() {
-        const board = <Board key={this.state.boardKey} />;
+        const board = <Board />;
 
         return (
             <div>
