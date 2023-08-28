@@ -69,7 +69,7 @@ class Board extends Component {
         /* if the number of rows changed is greater than the number of columns changed add the row cells */
         }else if(rowEnd-rowStart > colEnd-colStart){
             for(let j = rowStart; j<= rowEnd; j++){
-                newClickedCells.add(`${i}-${colIndex}`);
+                newClickedCells.add(`${j}-${colIndex}`);
             }
         /* they are equal and we want to add on the diagnal */
         }else{
