@@ -89,4 +89,8 @@ h3 {
     padding: 10px;
     text-align: center;
     font-size: 25px;
-  }
+}
+
+.cell.clicked {
+    background-color: burlywood;
+}
