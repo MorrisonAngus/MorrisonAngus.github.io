@@ -72,6 +72,20 @@ h3 {
 /* Tic Tac Toe page css */
 .board-container {
     display: grid;
-    grid-template-columns: repeat(3, 100px); /* Adjust the column size as needed */
-    gap: 1px; /* Gap between rows and columns */
+    grid-template-columns: repeat(3, 100px);
+    gap: 1px;
 }
+
+/* word search css */
+.board {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+    gap: 5px;
+  }
+
+.cell {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    font-size: 25px;
+  }
