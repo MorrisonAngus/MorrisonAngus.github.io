@@ -20,6 +20,7 @@ class Board extends Component {
         startColIndex: null,
       };
       this.wordList = ['WORDS', 'DUCK', 'SUN', 'AT', 'IT'];
+      this.foundWords =[];
     }
 
     /* Handel the mouse functions for click and drag */
