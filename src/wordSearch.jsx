@@ -2,8 +2,37 @@
 
 const { createElement, Component } = React;
 
-class board extends Component {
 
+class Board extends Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        grid: [
+          ['W', 'O', 'R', 'D', 'S'],
+          ['E', 'A', 'R', 'C', 'H'],
+          ['L', 'I', 'N', 'E', 'S'],
+          ['A', 'T', 'T', 'F', 'G'],
+        ],
+      };
+    }
+  
+    render() {
+      const { grid } = this.state;
+  
+      return (
+        <div className="board">
+          {grid.map((row, rowIndex) => (
+            <div key={rowIndex} className="row">
+              {row.map((cell, colIndex) => (
+                <div key={colIndex} className="cell">
+                  {cell}
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      );
+    }
 }
 
 
