@@ -64,12 +64,12 @@ class Board extends Component {
         /* if the number of columns is greater then we only want to include those cells */
         if(colEnd-colStart > rowEnd-rowStart){
             for(let j = colStart; j<= colEnd; j++){
-                newClickedCells.add(`${i}-${j}`);
+                newClickedCells.add(`${rowIndex}-${j}`);
             }
         /* if the number of rows changed is greater than the number of columns changed add the row cells */
         }else if(rowEnd-rowStart > colEnd-colStart){
             for(let j = rowStart; j<= rowEnd; j++){
-                newClickedCells.add(`${i}-${j}`);
+                newClickedCells.add(`${i}-${colIndex}`);
             }
         /* they are equal and we want to add on the diagnal */
         }else{
