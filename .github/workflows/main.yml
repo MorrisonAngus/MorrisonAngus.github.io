@@ -22,6 +22,12 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      - name: Delete Old Dist Directory
+        run: rm -rf dist
+
+      - name: Create New Dist Directory
+        run: mkdir dist
+
       - name: Install Babel Presets
         run: npm install --save-dev @babel/preset-react
 
@@ -33,6 +39,13 @@ jobs:
 
       - name: List Files in Dist Directory
         run: ls dist
+
+      - name: Configure Git
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add dist
+          git commit -m "Update dist directory"
 
   deploy:
     runs-on: ubuntu-latest
