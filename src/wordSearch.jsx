@@ -132,7 +132,20 @@ class Game extends Component {
         return (
             <div>
                 {board}
+            <div className="word-list">
+                <h3>Word List</h3>
+            <ul>
+                {board.getFoundWords().map((word, index) => (
+                <li key={index} className="found-word">
+                    <s>{word}</s>
+                </li>
+                ))}
+                {board.getRemainingWords().map((word, index) => (
+                <li key={index}>{word}</li>
+                ))}
+            </ul>
             </div>
+        </div>
         );
     }
 }
