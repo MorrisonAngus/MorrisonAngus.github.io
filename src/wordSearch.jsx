@@ -102,11 +102,11 @@ class Board extends Component {
         const { clickedCells } = this.state;
         const selectedCells = Array.from(clickedCells).sort().join(',');
         const foundWord = this.checkSelectedCellsForWord(selectedCells);
-        return foundWord ? [foundWord, ...this.foundWords] : this.foundWords;
+        return foundWord ? [foundWord, ...this.state.foundWords] : this.state.foundWords;
     }
     
     getRemainingWords() {
-        return this.wordList.filter(word => !this.foundWords.includes(word));
+        return this.wordList.filter(word => !this.state.foundWords.includes(word));
     }
 
     checkSelectedCellsForWord(selectedCells) {
@@ -154,6 +154,19 @@ class Board extends Component {
               ))}
             </div>
           ))}
+          <div className="word-list">
+            <h3>Word List</h3>
+            <ul>
+              {foundWords.map((word, index) => (
+                <li key={index} className="found-word">
+                  <s>{word}</s>
+                </li>
+              ))}
+              {remainingWords.map((word, index) => (
+                <li key={index}>{word}</li>
+              ))}
+            </ul>
+          </div>
         </div>
       );
     }
@@ -171,20 +184,7 @@ class Game extends Component {
         return (
             <div>
                 {board}
-            <div className="word-list">
-                <h3>Word List</h3>
-            <ul>
-                {board.getFoundWords().map((word, index) => (
-                <li key={index} className="found-word">
-                    <s>{word}</s>
-                </li>
-                ))}
-                {board.getRemainingWords().map((word, index) => (
-                <li key={index}>{word}</li>
-                ))}
-            </ul>
             </div>
-        </div>
         );
     }
 }
