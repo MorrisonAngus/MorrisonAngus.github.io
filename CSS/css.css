@@ -83,13 +83,6 @@ h3 {
     gap: 5px;
   }
 
-
-.row {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr)); 
-    gap: 5px;
-}
-
 .cell {
     border: 1px solid #000000;
     background-color: aliceblue;
