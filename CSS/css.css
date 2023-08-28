@@ -95,3 +95,22 @@ h3 {
 .cell.clicked {
     background-color: burlywood;
 }
+
+.word-list {
+  margin-top: 20px;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+
+.word-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.word-list li {
+  margin-bottom: 5px;
+}
+
+.found-word s {
+  text-decoration: line-through;
+}

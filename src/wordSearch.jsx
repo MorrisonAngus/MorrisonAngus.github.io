@@ -37,6 +37,15 @@ class Board extends Component {
           startRowIndex: null,
           startColIndex: null,
         });
+        const { clickedCells } = this.state;
+        const selectedCells = Array.from(clickedCells).sort().join(',');
+        const foundWord = this.checkSelectedCellsForWord(selectedCells);
+
+        if (foundWord) {
+            this.setState(prevState => ({
+            foundWords: [...prevState.foundWords, foundWord],
+            }));
+        }
     };
 
     /* Deal with what happens to cells when they are clicked*/
@@ -87,7 +96,37 @@ class Board extends Component {
           clickedCells: newClickedCells,
         });
     };
+
+    /* Deal with the word list */
+    getFoundWords() {
+        const { clickedCells } = this.state;
+        const selectedCells = Array.from(clickedCells).sort().join(',');
+        const foundWord = this.checkSelectedCellsForWord(selectedCells);
+        return foundWord ? [foundWord, ...this.foundWords] : this.foundWords;
+    }
+    
+    getRemainingWords() {
+        return this.wordList.filter(word => !this.foundWords.includes(word));
+    }
+
+    checkSelectedCellsForWord(selectedCells) {
+        const selectedCoordinates = selectedCells.split(',').map(cell => cell.split('-'));
+        for (const word of this.wordList) {
+          if (word.length === selectedCoordinates.length) {
+            const wordFound = word.split('').every((letter, index) => {
+              const [rowIndex, colIndex] = selectedCoordinates[index];
+              return this.state.grid[rowIndex][colIndex] === letter;
+            });
+            if (wordFound) {
+              return word;
+            }
+          }
+        }
+        return null;
+    }
   
+
+
     render() {
       const { grid, clickedCells } = this.state;
   
