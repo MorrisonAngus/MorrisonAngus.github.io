@@ -106,14 +106,11 @@ class Board extends Component {
 
     /* Deal with the word list */
     getFoundWords() {
-        const { clickedCells } = this.state;
-        const selectedCells = Array.from(clickedCells).sort().join(',');
-        const foundWord = this.checkSelectedCellsForWord(selectedCells);
-        return foundWord ? [foundWord, ...this.state.foundWords] : this.state.foundWords;
+      return this.state.foundWords;
     }
-    
+  
     getRemainingWords() {
-        return this.wordList.filter(word => !this.state.foundWords.includes(word));
+      return this.wordList.filter(word => !this.state.foundWords.includes(word));
     }
 
     checkSelectedCellsForWord(selectedCells) {
@@ -175,7 +172,7 @@ class Board extends Component {
     /* Render the board with the word lists being displayed */
     render() {
         const { grid, clickedCells } = this.state;
-        const remainingWords = this.wordList.filter(word => !this.state.foundWords.includes(word));
+        const remainingWords = this.getRemainingWords();
       
         return (
           <div className="board">
