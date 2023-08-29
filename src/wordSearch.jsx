@@ -37,18 +37,19 @@ class Board extends Component {
 
     handleMouseUp = () => {
         this.setState({
-          isMouseDown: false,
-          startRowIndex: null,
-          startColIndex: null,
+            isMouseDown: false,
+            startRowIndex: null,
+            startColIndex: null,
         });
         const { clickedCells } = this.state;
         const selectedCells = Array.from(clickedCells).sort().join(',');
         const foundWord = this.checkSelectedCellsForWord(selectedCells);
-
+    
         if (foundWord) {
-            this.setState(prevState => ({
-            foundWords: [...prevState.foundWords, foundWord],
-            }));
+            this.foundWords.push(foundWord); // Update the instance array
+            this.setState({
+                foundWords: this.foundWords, // Update the state
+            });
         }
     };
 
