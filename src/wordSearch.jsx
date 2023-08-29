@@ -140,33 +140,33 @@ class Board extends Component {
   }
   
   checkDirectionForWord(coordinates, direction, targetWord) {
-      const wordLength = targetWord.length;
-      let word = "";
-  
-      for (let i = 0; i < wordLength; i++) {
-          const [rowIndex, colIndex] = coordinates[i];
-          const [rowStep, colStep] = direction;
-          const nextRowIndex = Number(rowIndex) + rowStep * i;
-          const nextColIndex = Number(colIndex) + colStep * i;
-  
-          // Check if the next cell is within bounds
-          if (nextRowIndex >= 0 && nextRowIndex < this.state.grid.length &&
-              nextColIndex >= 0 && nextColIndex < this.state.grid[0].length) {
-  
-              const letter = this.state.grid[nextRowIndex][nextColIndex];
-              word += letter;
-          } else {
-              return null; // Word goes out of bounds
-          }
-      }
-  
-      // Check if the constructed word matches the target word
-      if (word === targetWord) {
-          return word;
-      }
-  
-      return null;
-  }
+    const wordLength = targetWord.length;
+    let word = "";
+
+    for (let i = 0; i < wordLength; i++) {
+        const [rowIndex, colIndex] = coordinates[i];
+        const [rowStep, colStep] = direction;
+        const nextRowIndex = Number(rowIndex) + rowStep * i;
+        const nextColIndex = Number(colIndex) + colStep * i;
+
+        // Check if the next cell is within bounds
+        if (nextRowIndex >= 0 && nextRowIndex < this.state.grid.length &&
+            nextColIndex >= 0 && nextColIndex < this.state.grid[nextRowIndex].length) {
+
+            const letter = this.state.grid[nextRowIndex][nextColIndex];
+            word += letter;
+        } else {
+            return null; // Word goes out of bounds
+        }
+    }
+
+    // Check if the constructed word matches the target word
+    if (word === targetWord) {
+        return word;
+    }
+
+    return null;
+}
   
 
     /* Render the board with the word lists being displayed */
