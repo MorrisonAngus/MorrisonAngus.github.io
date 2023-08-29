@@ -89,7 +89,7 @@ class Board extends Component {
         }else{
             for (let i = rowStart; i <= rowEnd; i++) {
                 for (let j = colStart; j <= colEnd; j++) {
-                    if(i===j){
+                    if(Math.abs(i - rowIndex) === Math.abs(j - colIndex)){
                         newClickedCells.add(`${i}-${j}`);
                     }
                 }
