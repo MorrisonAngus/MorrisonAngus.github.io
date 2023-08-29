@@ -37,21 +37,23 @@ class Board extends Component {
     };
 
     handleMouseUp = () => {
-        this.setState({
-            isMouseDown: false,
-            startRowIndex: null,
-            startColIndex: null,
-        });
-        const { clickedCells } = this.state;
-        const selectedCells = Array.from(clickedCells).sort().join(',');
-        const foundWord = this.checkSelectedCellsForWord(selectedCells);
-
-        if (foundWord) {
-            this.setState(prevState => ({
-                foundWords: [...prevState.foundWords, foundWord],
-            }));
-        }
-    };
+      this.setState({
+          isMouseDown: false,
+          startRowIndex: null,
+          startColIndex: null,
+      });
+  
+      const { clickedCells, foundWords } = this.state;
+      const selectedCells = Array.from(clickedCells).sort().join(',');
+      const foundWord = this.checkSelectedCellsForWord(selectedCells);
+  
+      if (foundWord) {
+          const updatedFoundWords = [...foundWords, foundWord]; // Add the new word
+          this.setState({
+              foundWords: updatedFoundWords, // Update the state
+          });
+      }
+  };
 
     /* Deal with what happens to cells when they are clicked*/
     handleCellClick = (rowIndex, colIndex) => {
