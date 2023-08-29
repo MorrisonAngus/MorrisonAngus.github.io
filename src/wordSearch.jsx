@@ -18,9 +18,10 @@ class Board extends Component {
         isMouseDown: false,
         startRowIndex: null,
         startColIndex: null,
+        foundWords: [],
       };
       this.wordList = ['WORDS', 'DUCK', 'SUN', 'AT', 'IT'];
-      this.foundWords =[];
+      
 
       this.handleMouseDown = this.handleMouseDown.bind(this);
       this.handleMouseUp = this.handleMouseUp.bind(this);
@@ -44,12 +45,11 @@ class Board extends Component {
         const { clickedCells } = this.state;
         const selectedCells = Array.from(clickedCells).sort().join(',');
         const foundWord = this.checkSelectedCellsForWord(selectedCells);
-    
+
         if (foundWord) {
-            this.foundWords.push(foundWord); // Update the instance array
-            this.setState({
-                foundWords: this.foundWords, // Update the state
-            });
+            this.setState(prevState => ({
+                foundWords: [...prevState.foundWords, foundWord],
+            }));
         }
     };
 
@@ -107,11 +107,11 @@ class Board extends Component {
         const { clickedCells } = this.state;
         const selectedCells = Array.from(clickedCells).sort().join(',');
         const foundWord = this.checkSelectedCellsForWord(selectedCells);
-        return foundWord ? [foundWord, ...this.foundWords] : this.foundWords;
+        return foundWord ? [foundWord, ...this.state.foundWords] : this.state.foundWords;
     }
     
     getRemainingWords() {
-        return this.wordList.filter(word => !this.foundWords.includes(word));
+        return this.wordList.filter(word => !this.state.foundWords.includes(word));
     }
 
     checkSelectedCellsForWord(selectedCells) {
