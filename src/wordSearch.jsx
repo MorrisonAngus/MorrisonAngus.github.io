@@ -21,6 +21,9 @@ class Board extends Component {
       };
       this.wordList = ['WORDS', 'DUCK', 'SUN', 'AT', 'IT'];
       this.foundWords =[];
+
+      this.handleMouseDown = this.handleMouseDown.bind(this);
+      this.handleMouseUp = this.handleMouseUp.bind(this);
     }
 
     /* Handel the mouse functions for click and drag */
