@@ -115,20 +115,43 @@ class Board extends Component {
     }
 
     checkSelectedCellsForWord(selectedCells) {
-        const selectedCoordinates = selectedCells.split(',').map(cell => cell.split('-'));
-        for (const word of this.wordList) {
+      const selectedCoordinates = selectedCells.split(',').map(cell => cell.split('-'));
+      for (const word of this.wordList) {
           if (word.length === selectedCoordinates.length) {
-            const wordFound = word.split('').every((letter, index) => {
-              const [rowIndex, colIndex] = selectedCoordinates[index];
-              return this.state.grid[rowIndex][colIndex] === letter;
-            });
-            if (wordFound) {
-              return word;
-            }
+              const wordFound = word.split('').every((letter, index) => {
+                  const [rowIndex, colIndex] = selectedCoordinates[index];
+                  return this.state.grid[rowIndex][colIndex] === letter;
+              });
+              if (wordFound) {
+                  return word;
+              }
           }
-        }
-        return null;
-    }
+      }
+  
+      // Check diagonals
+      const diagonalWord = this.wordList.find(word => {
+          const directions = [
+              [-1, -1], // Top-left diagonal
+              [-1, 1],  // Top-right diagonal
+              [1, -1],  // Bottom-left diagonal
+              [1, 1]    // Bottom-right diagonal
+          ];
+          return directions.some(direction => {
+              const [dx, dy] = direction;
+              const startCell = selectedCoordinates[0];
+              const endCell = selectedCoordinates[selectedCoordinates.length - 1];
+              const rowDiff = endCell[0] - startCell[0];
+              const colDiff = endCell[1] - startCell[1];
+              const wordCells = selectedCoordinates.map((cell, index) => {
+                  const [row, col] = cell;
+                  return this.state.grid[row][col];
+              });
+              return word === wordCells.join('') && rowDiff === dx * (index + 1) && colDiff === dy * (index + 1);
+          });
+      });
+  
+      return diagonalWord || null;
+  }
   
 
     /* Render the board with the word lists being displayed */
