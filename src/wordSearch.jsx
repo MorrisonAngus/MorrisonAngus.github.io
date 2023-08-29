@@ -116,57 +116,15 @@ class Board extends Component {
 
     checkSelectedCellsForWord(selectedCells) {
       const selectedCoordinates = selectedCells.split(',').map(cell => cell.split('-'));
-      const directions = [
-          [1, 0], // Down
-          [0, 1], // Right
-          [-1, 0], // Up
-          [0, -1], // Left
-          [1, 1], // Diagonal down-right
-          [-1, 1], // Diagonal up-right
-          [1, -1], // Diagonal down-left
-          [-1, -1] // Diagonal up-left
-      ];
   
-      for (const word of this.wordList) {
-          for (const direction of directions) {
-              const wordFound = this.checkDirectionForWord(selectedCoordinates, direction, word);
-              if (wordFound) {
-                  return wordFound;
-              }
-          }
+      const selectedCellIndices = selectedCoordinates.map(([rowIndex, colIndex]) => [Number(rowIndex), Number(colIndex)]);
+      const selectedWord = selectedCellIndices.map(([rowIndex, colIndex]) => this.state.grid[rowIndex][colIndex]).join('');
+  
+      if (this.wordList.includes(selectedWord)) {
+          return selectedWord;
       }
   
       return null;
-  }
-  
-  checkDirectionForWord(coordinates, direction, targetWord) {
-    const wordLength = targetWord.length;
-    let word = "";
-
-    const [rowStep, colStep] = direction; // Destructure the direction here
-    
-    for (let i = 0; i < wordLength; i++) {
-        const [rowIndex, colIndex] = coordinates;
-        const nextRowIndex = Number(rowIndex) + rowStep * i;
-        const nextColIndex = Number(colIndex) + colStep * i;
-
-        // Check if the next cell is within bounds
-        if (nextRowIndex >= 0 && nextRowIndex < this.state.grid.length &&
-            nextColIndex >= 0 && nextColIndex < this.state.grid[nextRowIndex].length) {
-
-            const letter = this.state.grid[nextRowIndex][nextColIndex];
-            word += letter;
-        } else {
-            return null; // Word goes out of bounds
-        }
-    }
-
-    // Check if the constructed word matches the target word
-    if (word === targetWord) {
-        return word;
-    }
-
-    return null;
   }
   
 
