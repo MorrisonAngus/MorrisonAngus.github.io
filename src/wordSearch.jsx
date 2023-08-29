@@ -48,10 +48,11 @@ class Board extends Component {
       const foundWord = this.checkSelectedCellsForWord(selectedCells);
   
       if (foundWord) {
-          const updatedFoundWords = [...foundWords, foundWord]; // Add the new word
-          this.setState({
-              foundWords: updatedFoundWords, // Update the state
-          });
+        console.log("Found a word: ", foundWord);
+        const updatedFoundWords = [...foundWords, foundWord]; // Add the new word
+        this.setState({
+            foundWords: updatedFoundWords, // Update the state
+        });
       }
   };
 
