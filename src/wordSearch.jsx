@@ -7,7 +7,7 @@ class Board extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        grid: [
+        grid: [ /* Static grid for now */
           ['W', 'E', 'L', 'A'],
           ['O', 'A', 'I', 'T'],
           ['R', 'R', 'N', 'X'],
@@ -127,7 +127,7 @@ class Board extends Component {
     }
   
 
-
+    /* Render the board with the word lists being displayed */
     render() {
         const { grid, clickedCells } = this.state;
         const remainingWords = this.wordList.filter(word => !this.state.foundWords.includes(word));
