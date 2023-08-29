@@ -143,9 +143,10 @@ class Board extends Component {
     const wordLength = targetWord.length;
     let word = "";
 
+    const [rowStep, colStep] = direction; // Destructure the direction here
+    
     for (let i = 0; i < wordLength; i++) {
-        const [rowIndex, colIndex] = coordinates[i];
-        const [rowStep, colStep] = direction;
+        const [rowIndex, colIndex] = coordinates;
         const nextRowIndex = Number(rowIndex) + rowStep * i;
         const nextColIndex = Number(colIndex) + colStep * i;
 
@@ -166,7 +167,7 @@ class Board extends Component {
     }
 
     return null;
-}
+  }
   
 
     /* Render the board with the word lists being displayed */
