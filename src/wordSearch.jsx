@@ -46,6 +46,13 @@ class Board extends Component {
       const { clickedCells, foundWords } = this.state;
       const selectedCells = Array.from(clickedCells).sort().join(',');
       const foundWord = this.checkSelectedCellsForWord(selectedCells);
+
+      // Check if the word is not in the wordList
+      if (!this.wordList.includes(foundWord)) {
+        // If it is not then reverse it
+        foundWord = foundWord.split('').reverse().join('');
+        // Then move on to adding it to the list
+      }
   
       if (foundWord) {
         console.log("Found a word: ", foundWord);
