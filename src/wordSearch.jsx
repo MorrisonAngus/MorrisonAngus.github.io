@@ -20,7 +20,7 @@ class Board extends Component {
         startColIndex: null,
         foundWords: [],
       };
-      this.wordList = ['WORDS', 'DUCK', 'SUN', 'AT', 'IT'];
+      this.wordList = ['WORDS', 'DUCK', 'SUN', 'EAR', 'AT', 'IT'];
       
 
       this.handleMouseDown = this.handleMouseDown.bind(this);
@@ -116,41 +116,42 @@ class Board extends Component {
 
     checkSelectedCellsForWord(selectedCells) {
       const selectedCoordinates = selectedCells.split(',').map(cell => cell.split('-'));
-      for (const word of this.wordList) {
-          if (word.length === selectedCoordinates.length) {
-              const wordFound = word.split('').every((letter, index) => {
-                  const [rowIndex, colIndex] = selectedCoordinates[index];
-                  return this.state.grid[rowIndex][colIndex] === letter;
-              });
-              if (wordFound) {
-                  return word;
-              }
+  
+      // Check for words in the forward direction
+      const forwardWord = this.checkDirectionForWord(selectedCoordinates, 1);
+      
+      // Check for words in the backward direction
+      const backwardWord = this.checkDirectionForWord(selectedCoordinates, -1);
+  
+      return forwardWord || backwardWord;
+  }
+  
+  checkDirectionForWord(coordinates, step) {
+      const wordLength = coordinates.length;
+      let word = "";
+  
+      for (let i = 0; i < wordLength; i++) {
+          const [rowIndex, colIndex] = coordinates[i];
+          const nextRowIndex = Number(rowIndex) + step * i;
+          const nextColIndex = Number(colIndex) + step * i;
+  
+          // Check if the next cell is within bounds
+          if (nextRowIndex >= 0 && nextRowIndex < this.state.grid.length &&
+              nextColIndex >= 0 && nextColIndex < this.state.grid[0].length) {
+  
+              const letter = this.state.grid[nextRowIndex][nextColIndex];
+              word += letter;
+          } else {
+              return null; // Word goes out of bounds
           }
       }
   
-      // Check diagonals
-      const diagonalWord = this.wordList.find(word => {
-          const directions = [
-              [-1, -1], // Top-left diagonal
-              [-1, 1],  // Top-right diagonal
-              [1, -1],  // Bottom-left diagonal
-              [1, 1]    // Bottom-right diagonal
-          ];
-          return directions.some(direction => {
-              const [dx, dy] = direction;
-              const startCell = selectedCoordinates[0];
-              const endCell = selectedCoordinates[selectedCoordinates.length - 1];
-              const rowDiff = endCell[0] - startCell[0];
-              const colDiff = endCell[1] - startCell[1];
-              const wordCells = selectedCoordinates.map((cell, index) => {
-                  const [row, col] = cell;
-                  return this.state.grid[row][col];
-              });
-              return word === wordCells.join('') && rowDiff === dx * (index + 1) && colDiff === dy * (index + 1);
-          });
-      });
+      // Check if the constructed word is in the wordList
+      if (this.wordList.includes(word)) {
+          return word;
+      }
   
-      return diagonalWord || null;
+      return null;
   }
   
 
