@@ -120,12 +120,14 @@ class Board extends Component {
       const selectedCellIndices = selectedCoordinates.map(([rowIndex, colIndex]) => [Number(rowIndex), Number(colIndex)]);
       const selectedWord = selectedCellIndices.map(([rowIndex, colIndex]) => this.state.grid[rowIndex][colIndex]).join('');
   
-      if (this.wordList.includes(selectedWord)) {
+      const reversedSelectedWord = selectedWord.split('').reverse().join('');
+  
+      if (this.wordList.includes(selectedWord) || this.wordList.includes(reversedSelectedWord)) {
           return selectedWord;
       }
   
       return null;
-  }
+    }
   
 
     /* Render the board with the word lists being displayed */
