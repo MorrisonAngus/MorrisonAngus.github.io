@@ -116,24 +116,38 @@ class Board extends Component {
 
     checkSelectedCellsForWord(selectedCells) {
       const selectedCoordinates = selectedCells.split(',').map(cell => cell.split('-'));
+      const directions = [
+          [1, 0], // Down
+          [0, 1], // Right
+          [-1, 0], // Up
+          [0, -1], // Left
+          [1, 1], // Diagonal down-right
+          [-1, 1], // Diagonal up-right
+          [1, -1], // Diagonal down-left
+          [-1, -1] // Diagonal up-left
+      ];
   
-      // Check for words in the forward direction
-      const forwardWord = this.checkDirectionForWord(selectedCoordinates, 1);
-      
-      // Check for words in the backward direction
-      const backwardWord = this.checkDirectionForWord(selectedCoordinates, -1);
+      for (const word of this.wordList) {
+          for (const direction of directions) {
+              const wordFound = this.checkDirectionForWord(selectedCoordinates, direction, word);
+              if (wordFound) {
+                  return wordFound;
+              }
+          }
+      }
   
-      return forwardWord || backwardWord;
+      return null;
   }
   
-  checkDirectionForWord(coordinates, step) {
-      const wordLength = coordinates.length;
+  checkDirectionForWord(coordinates, direction, targetWord) {
+      const wordLength = targetWord.length;
       let word = "";
   
       for (let i = 0; i < wordLength; i++) {
           const [rowIndex, colIndex] = coordinates[i];
-          const nextRowIndex = Number(rowIndex) + step * i;
-          const nextColIndex = Number(colIndex) + step * i;
+          const [rowStep, colStep] = direction;
+          const nextRowIndex = Number(rowIndex) + rowStep * i;
+          const nextColIndex = Number(colIndex) + colStep * i;
   
           // Check if the next cell is within bounds
           if (nextRowIndex >= 0 && nextRowIndex < this.state.grid.length &&
@@ -146,8 +160,8 @@ class Board extends Component {
           }
       }
   
-      // Check if the constructed word is in the wordList
-      if (this.wordList.includes(word)) {
+      // Check if the constructed word matches the target word
+      if (word === targetWord) {
           return word;
       }
   
