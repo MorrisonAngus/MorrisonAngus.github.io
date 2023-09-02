@@ -8,7 +8,7 @@ const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
-//const response = await openai.listEngines(); // Documentation said to include it. Don't think I need to
+const response = await openai.listEngines(); // Documentation said to include it. Don't think I need to
 const mySecret = process.env.GPT_API;
 
 // This displays a box with the info collected from chat gpt
