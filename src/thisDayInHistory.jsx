@@ -27,24 +27,24 @@ class Display extends Component {
         this.getDayDetails();
     }
 
-    getDayDetails () {
+    async getDayDetails() {
         const prompt = "Say this is a test";
-
-        openai.Completion.create({
-            engine: "text-davinci-002", 
-            prompt: prompt,
-            max_tokens: 50, // Set the maximum number of tokens in the response
-            n: 1, // Number of completions to generate
-            stop: null, // Optional: You can specify a list of stop words
-            temperature: 0.7, // Optional: Adjust the randomness of the output
-        }).then((response) => {
-            // Extract the generated text from the API response
+    
+        try {
+            const response = await openai.Completion.create({
+                engine: "text-davinci-002",
+                prompt: prompt,
+                max_tokens: 50,
+                n: 1,
+                stop: null,
+                temperature: 0.7,
+            });
+    
             const generatedText = response.choices[0].text;
-            this.setState({output: generatedText});
-        })
-          .catch((error) => {
+            this.setState({ output: generatedText });
+        } catch (error) {
             console.error("API Request Error:", error);
-        });
+        }
     }
 
     render () {
