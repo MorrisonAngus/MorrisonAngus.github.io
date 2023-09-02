@@ -5,11 +5,10 @@ const { createElement, Component } = React;
 import { Configuration, OpenAIApi } from "openai";
 const configuration = new Configuration({
     organization: "org-2KEWsr9tVZglYFjJqfGTrOIf",
-    apiKey: process.env.OPENAI_API_KEY,
+    apiKey: process.env.GPT_API,
 });
 const openai = new OpenAIApi(configuration);
-const response = await openai.listEngines(); // Documentation said to include it. Don't think I need to
-const mySecret = process.env.GPT_API;
+
 
 // This displays a box with the info collected from chat gpt
 class Display extends Component {
