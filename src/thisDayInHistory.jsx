@@ -5,7 +5,7 @@ const { createElement, Component } = React;
 import { Configuration, OpenAIApi } from "openai";
 const configuration = new Configuration({
     organization: "org-2KEWsr9tVZglYFjJqfGTrOIf",
-    apiKey: process.env.GPT_API,
+    apiKey: process.env.REACT_APP_GPT_API,
 });
 const openai = new OpenAIApi(configuration);
 
