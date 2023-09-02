@@ -2,7 +2,7 @@
 
 const { createElement, Component } = React;
 
-import { Configuration, OpenAIApi } from "openai";
+//import { Configuration, OpenAIApi } from "openai"; //Seeing if taking this out fixes the error
 const configuration = new Configuration({
     organization: "org-2KEWsr9tVZglYFjJqfGTrOIf",
     apiKey: process.env.REACT_APP_GPT_API,
