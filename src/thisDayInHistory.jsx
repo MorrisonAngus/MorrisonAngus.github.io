@@ -6,7 +6,7 @@ const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
-const response = await openai.listEngines();
+//const response = await openai.listEngines(); // Documentation said to include it. Don't think I need to
 
 const { createElement, Component } = React;
 const mySecret = process.env.GPT_API;
