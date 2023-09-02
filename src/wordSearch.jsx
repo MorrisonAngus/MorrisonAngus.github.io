@@ -52,8 +52,8 @@ class Board extends Component {
       let foundWord = this.checkSelectedCellsForWord(selectedCells);
 
       
-      // if there is a found word 
-      if (foundWord) {
+      // if there is a found word and it has not already been found
+      if (foundWord && !this.state.foundWords.includes(foundWord)) {
         // Check if the word is not in the wordList
         if (!this.wordList.includes(foundWord)) {
           // If it is not then reverse it
