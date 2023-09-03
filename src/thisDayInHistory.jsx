@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import "openai";
+import {Configuration, OpenAIApi} from "openai";
 
 const configuration = new Configuration({
     organization: 'org-2KEWsr9tVZglYFjJqfGTrOIf',
