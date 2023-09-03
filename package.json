@@ -2,6 +2,7 @@
     "name": "angus-website",
     "version": "0.1.0",
     "description": "A website to include as a resume extension",
+    "type": "module",
     "main": "index.js",
     "scripts": {
         "start": "concurrently \"node index.js\" \"webpack serve --mode development --open\"",
