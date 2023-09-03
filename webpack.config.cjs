@@ -19,6 +19,14 @@ module.exports = {
           loader: 'babel-loader',
         },
       },
+      // Add a rule to exclude HTML files
+      {
+        test: /\.html$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'html-loader', // You can use 'html-loader' or another loader that can handle HTML files
+        },
+      },
     ],
   },
   resolve: {
