@@ -45,16 +45,25 @@ class Display extends Component {
     }
 
     render() {
-        return (
-            <div className="GTP_output">
-                <h3>This day in history as presented by chat GPT.</h3>
-                <p>On this day the following happened:</p>
-                <p>{this.state.output}</p>
-            </div>
-        );
+        const divElement = document.createElement('div');
+        divElement.className = 'GTP_output';
+
+        const h3Element = document.createElement('h3');
+        h3Element.textContent = 'This day in history as presented by chat GPT.';
+        divElement.appendChild(h3Element);
+
+        const p1Element = document.createElement('p');
+        p1Element.textContent = 'On this day the following happened:';
+        divElement.appendChild(p1Element);
+
+        const p2Element = document.createElement('p');
+        p2Element.textContent = this.state.output;
+        divElement.appendChild(p2Element);
+
+        return divElement;
     }
 }
 
 const domContainer = document.querySelector('#React-game');
-const boardElement = <Display />;
-ReactDOM.render(boardElement, domContainer);
+const displayComponent = new Display();
+domContainer.appendChild(displayComponent.render());
