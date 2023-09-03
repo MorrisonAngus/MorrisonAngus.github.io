@@ -22,8 +22,6 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-
-
       - name: Delete Old Dist Directory
         run: rm -rf dist
 
@@ -41,6 +39,9 @@ jobs:
 
       - name: List Files in Dist Directory
         run: ls dist
+
+      - name: Build with Webpack
+        run: npm run build
 
       - name: Configure Git
         run: |

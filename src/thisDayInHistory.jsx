@@ -1,8 +1,8 @@
 'use strict';
 
-//import React, { Component } from 'react';
-//import ReactDOM from 'react-dom';
-//import { Configuration, OpenAIApi } from '../node_modules/openai';
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import { Configuration, OpenAIApi } from '../node_modules/openai';
 
 const configuration = new Configuration({
     organization: 'org-2KEWsr9tVZglYFjJqfGTrOIf',
