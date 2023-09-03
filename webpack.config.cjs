@@ -24,7 +24,7 @@ module.exports = {
         test: /\.html$/,
         exclude: /node_modules/,
         use: {
-          loader: 'html-loader', // You can use 'html-loader' or another loader that can handle HTML files
+          loader: 'babel-loader', // You can use 'html-loader' or another loader that can handle HTML files
         },
       },
     ],
