@@ -12,6 +12,7 @@
         "@babel/cli": "^7.22.10",
         "@babel/core": "^7.22.11",
         "@babel/preset-env": "^7.22.14",
+        "@babel/preset-modules": "^0.1.6",
         "@babel/preset-react": "^7.22.5",
         "babel-loader": "^9.1.3",
         "babel-plugin-transform-commonjs": "^1.1.6",
