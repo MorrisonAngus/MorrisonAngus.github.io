@@ -38,7 +38,7 @@ jobs:
         run: chmod +x node_modules/.bin/babel
 
       - name: Build with Babel
-        run: npx babel src --out-dir dist --presets=@babel/preset-react --config-file ./babel.config.js
+        run: npx babel src --out-dir dist --presets=@babel/preset-react --config-file ./babel.config.cjs
 
       - name: List Files in Dist Directory
         run: ls dist
