@@ -1,14 +1,11 @@
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: './dist/thisDayInHistory.js',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    // Specify the target as 'module'
-    environment: {
-      module: true,
-    },
   },
   module: {
     rules: [
@@ -19,12 +16,11 @@ module.exports = {
           loader: 'babel-loader',
         },
       },
-      // Add a rule to exclude HTML files
       {
         test: /\.html$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader', // You can use 'html-loader' or another loader that can handle HTML files
+          loader: 'babel-loader', // or 'html-loader' if you prefer
         },
       },
     ],
@@ -32,4 +28,9 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+  // Set the target environment to 'web'
+  target: 'web',
+  plugins: [
+    new Dotenv(),
+  ],
 };
