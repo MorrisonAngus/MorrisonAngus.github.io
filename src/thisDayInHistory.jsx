@@ -1,6 +1,7 @@
 'use strict';
 
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import { Configuration, OpenAIApi } from 'openai';
 
 const configuration = new Configuration({
