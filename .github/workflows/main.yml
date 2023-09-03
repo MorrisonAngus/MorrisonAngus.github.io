@@ -41,7 +41,7 @@ jobs:
         run: ls dist
 
       - name: Build with Webpack
-        run: npm run build
+        run: npx webpack --mode production
 
       - name: Configure Git
         run: |
