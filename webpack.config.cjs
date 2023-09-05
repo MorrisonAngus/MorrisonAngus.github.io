@@ -3,6 +3,7 @@ const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: './dist/thisDayInHistory.js',
+  target: 'web',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
