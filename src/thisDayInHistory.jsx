@@ -1,12 +1,19 @@
 'use strict';
 
+// React
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+
+// Open AI
 import {Configuration, OpenAIApi} from "openai";
+
+// Enviroment Variables
+import dotenv from 'dotenv';
+dotenv.config();
 
 const configuration = new Configuration({
     organization: 'org-2KEWsr9tVZglYFjJqfGTrOIf',
-    apiKey: "", // Update with the API key
+    apiKey: process.env.REACT_APP_GPT_API,
 });
 
 const openai = new OpenAIApi(configuration);
