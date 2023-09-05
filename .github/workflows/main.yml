@@ -16,6 +16,9 @@ jobs:
         with:
           node-version: 20.5.0
 
+      - name: Set GPT_API Secret
+        run: echo "REACT_APP_GPT_API=${{ secrets.GPT_API }}" >> .env
+
       - name: Update npm
         run: npm install -g npm@latest
 
