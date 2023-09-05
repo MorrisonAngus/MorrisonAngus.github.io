@@ -18,7 +18,10 @@
         "babel-plugin-transform-commonjs": "^1.1.6",
         "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
         "concurrently": "^8.2.1",
+        "crypto-browserify": "^3.12.0",
         "html-loader": "^4.2.0",
+        "os-browserify": "^0.3.0",
+        "path-browserify": "^1.0.1",
         "webpack": "^5.88.2",
         "webpack-cli": "^5.1.4",
         "webpack-dev-server": "^4.15.1"
