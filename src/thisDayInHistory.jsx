@@ -4,16 +4,17 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-// Open AI
-import {Configuration, OpenAIApi} from "openai";
+// OpenAI
+import { Configuration, OpenAIApi } from 'openai';
 
-// Enviroment Variables
+// Environment Variables
 import dotenv from 'dotenv';
 dotenv.config();
 
+// OpenAI Configuration (Ensure API key is loaded securely from .env)
 const configuration = new Configuration({
     organization: 'org-2KEWsr9tVZglYFjJqfGTrOIf',
-    apiKey: ,
+    apiKey: process.env.OPENAI_API_KEY, // Corrected
 });
 
 const openai = new OpenAIApi(configuration);
@@ -36,26 +37,29 @@ class Display extends Component {
         const prompt = 'Say this is a test';
 
         try {
-            const response = await openai.Completion.create({
-                engine: 'text-davinci-002',
-                prompt: prompt,
+            // Corrected the API call method to 'createCompletion'
+            const response = await openai.createChatCompletion({
+                model: 'gpt-3.5-turbo',
+                messages: [
+                    { role: 'user', content: prompt }
+                ],
                 max_tokens: 50,
-                n: 1,
-                stop: null,
                 temperature: 0.7,
             });
 
-            const generatedText = response.choices[0].text;
+            
+            const generatedText = response.data.choices[0].message.content.trim();
             this.setState({ output: generatedText });
         } catch (error) {
             console.error('API Request Error:', error);
+            this.setState({ output: 'Error fetching data from OpenAI.' });
         }
     }
 
     render() {
         return (
             <div className="GTP_output">
-                <h3>This day in history as presented by chat GPT.</h3>
+                <h3>This day in history as presented by ChatGPT</h3>
                 <p>On this day the following happened:</p>
                 <p>{this.state.output}</p>
             </div>
