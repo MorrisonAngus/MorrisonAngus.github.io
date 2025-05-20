@@ -114,3 +114,15 @@ h3 {
 .found-word s {
   text-decoration: line-through;
 }
+
+/* counter css */
+#countLabel{
+    display: block;
+    text-align: center;
+    font-size: 10em;
+    font-family: helvetica;
+}
+
+#btnContainer{
+    text-align: center;
+}
