@@ -9,19 +9,15 @@ let count = 0;
 
 incrementBtn.onclick = function(){
     count++;
-    update_count;
+    countLabel.textContent = count;
 }
 
 decrementBtn.onclick = function(){
     count--;
-    update_count;
+    countLabel.textContent = count;
 }
 
 resetBtn.onclick = function(){
     count = 0;
-    update_count;
-}
-
-let update_count = function(){
     countLabel.textContent = count;
 }
