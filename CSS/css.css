@@ -126,3 +126,17 @@ h3 {
 #btnContainer{
     text-align: center;
 }
+
+.counterButton{
+    padding: 10px 20px;
+    font-size: 1.5em;
+    color: white;
+    background-color: #96A5A3;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.25s;
+}
+
+.counterButton:hover{
+    background-color: burlywood;
+}
