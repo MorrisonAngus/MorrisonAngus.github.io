@@ -26,6 +26,10 @@ nav{
     width: 100%;
 }
 
+object{
+    width: 100%;
+}
+
 .navigation {
     position: fixed;
     top: 0;
